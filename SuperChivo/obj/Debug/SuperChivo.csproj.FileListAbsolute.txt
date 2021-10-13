@@ -1,0 +1,15 @@
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\SuperChivo.exe.config
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\SuperChivo.exe
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\SuperChivo.pdb
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.AssemblyReference.cache
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.Form1.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.Properties.Resources.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.GenerateResource.cache
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.CoreCompileInputs.cache
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.exe
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.pdb
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.LoginTrabajadores.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.dll
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.xml
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.CopyComplete
