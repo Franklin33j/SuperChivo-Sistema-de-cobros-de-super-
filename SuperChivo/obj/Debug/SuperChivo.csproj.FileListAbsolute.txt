@@ -13,3 +13,4 @@ C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\BouncyCastl
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.dll
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.xml
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.CopyComplete
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.AreaTrabajo.resources
