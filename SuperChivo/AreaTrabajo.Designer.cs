@@ -31,15 +31,15 @@ namespace SuperChivo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AreaTrabajo));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lbEstado = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.mostrarProductos = new System.Windows.Forms.ListView();
             this.Interno = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.descripcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.precioUnitario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,9 +48,17 @@ namespace SuperChivo
             this.precio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbIVA = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbTotalNeto = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -65,16 +73,17 @@ namespace SuperChivo
             this.label1.TabIndex = 0;
             this.label1.Text = "CODIGO:";
             // 
-            // textBox1
+            // txtCodigo
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(142, 3);
-            this.textBox1.MaxLength = 13;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 31);
-            this.textBox1.TabIndex = 1;
+            this.txtCodigo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtCodigo.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.ForeColor = System.Drawing.Color.Black;
+            this.txtCodigo.Location = new System.Drawing.Point(142, 3);
+            this.txtCodigo.MaxLength = 13;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(240, 31);
+            this.txtCodigo.TabIndex = 1;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // label2
             // 
@@ -104,7 +113,7 @@ namespace SuperChivo
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtCodigo);
             this.panel1.Controls.Add(this.lbEstado);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -124,17 +133,17 @@ namespace SuperChivo
             this.panel2.Size = new System.Drawing.Size(660, 82);
             this.panel2.TabIndex = 4;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(13, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 23);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Cajero:";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(304, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 23);
+            this.label5.TabIndex = 5;
+            this.label5.Text = ":";
             // 
             // label4
             // 
@@ -148,35 +157,35 @@ namespace SuperChivo
             this.label4.TabIndex = 4;
             this.label4.Text = "Tipo de Comprobante:";
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(304, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 23);
-            this.label5.TabIndex = 5;
-            this.label5.Text = ":";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(13, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 23);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Cajero:";
             // 
-            // listView1
+            // mostrarProductos
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.mostrarProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Interno,
             this.descripcion,
             this.precioUnitario,
             this.cantidad,
             this.descuento,
             this.precio});
-            this.listView1.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(22, 116);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1314, 362);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.mostrarProductos.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mostrarProductos.HideSelection = false;
+            this.mostrarProductos.Location = new System.Drawing.Point(22, 116);
+            this.mostrarProductos.Name = "mostrarProductos";
+            this.mostrarProductos.Size = new System.Drawing.Size(1314, 362);
+            this.mostrarProductos.TabIndex = 5;
+            this.mostrarProductos.UseCompatibleStateImageBehavior = false;
+            this.mostrarProductos.View = System.Windows.Forms.View.Details;
             // 
             // Interno
             // 
@@ -214,7 +223,7 @@ namespace SuperChivo
             this.panel3.Controls.Add(this.tableLayoutPanel1);
             this.panel3.Location = new System.Drawing.Point(22, 504);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1305, 171);
+            this.panel3.Size = new System.Drawing.Size(1113, 171);
             this.panel3.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -230,8 +239,77 @@ namespace SuperChivo
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 126);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 126);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbTotalNeto);
+            this.panel4.Controls.Add(this.label9);
+            this.panel4.Controls.Add(this.lbIVA);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.lbTotal);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(1141, 495);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(195, 93);
+            this.panel4.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 21);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Total:";
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(62, 9);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(50, 21);
+            this.lbTotal.TabIndex = 1;
+            this.lbTotal.Text = "$0.00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 21);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "IVA:";
+            // 
+            // lbIVA
+            // 
+            this.lbIVA.AutoSize = true;
+            this.lbIVA.Location = new System.Drawing.Point(62, 34);
+            this.lbIVA.Name = "lbIVA";
+            this.lbIVA.Size = new System.Drawing.Size(50, 21);
+            this.lbIVA.TabIndex = 3;
+            this.lbIVA.Text = "$0.00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 59);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 21);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "total Neto:";
+            // 
+            // lbTotalNeto
+            // 
+            this.lbTotalNeto.AutoSize = true;
+            this.lbTotalNeto.Location = new System.Drawing.Point(107, 59);
+            this.lbTotalNeto.Name = "lbTotalNeto";
+            this.lbTotalNeto.Size = new System.Drawing.Size(50, 21);
+            this.lbTotalNeto.TabIndex = 5;
+            this.lbTotalNeto.Text = "$0.00";
             // 
             // AreaTrabajo
             // 
@@ -239,8 +317,9 @@ namespace SuperChivo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(243)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(1348, 687);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.mostrarProductos);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1366, 728);
@@ -253,6 +332,8 @@ namespace SuperChivo
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -260,7 +341,7 @@ namespace SuperChivo
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbEstado;
         private System.Windows.Forms.Panel panel1;
@@ -268,7 +349,7 @@ namespace SuperChivo
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView mostrarProductos;
         private System.Windows.Forms.ColumnHeader Interno;
         private System.Windows.Forms.ColumnHeader descripcion;
         private System.Windows.Forms.ColumnHeader precioUnitario;
@@ -277,5 +358,12 @@ namespace SuperChivo
         private System.Windows.Forms.ColumnHeader precio;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbTotalNeto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbIVA;
+        private System.Windows.Forms.Label label7;
     }
 }

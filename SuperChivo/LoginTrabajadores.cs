@@ -40,6 +40,7 @@ namespace SuperChivo
                 txtPassword.Clear();
                 txtId.Focus();
             }
+            conexion.Desconectar();
         }
         private void ValidarErrores()
         {

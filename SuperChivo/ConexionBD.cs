@@ -61,5 +61,38 @@ namespace SuperChivo
             return (va1, va2);
 
         }
+        /// <summary>
+        /// Metodo encargado de leer datos de la base de datos cuando el valor introducido coincida con
+        /// algun valor en la base de datos.
+        /// Si Producto es null no se encontro ningun resultado en la consulta
+        /// </summary>
+        /// <param name="codigo">Almacena el valor del codigo introducido por el usuario para su respectiva verififcacion</param>
+        /// <returns></returns>
+        public ( string producto, string interno, int descuento, double precio) ConsultarProductos(string codigo)
+        {
+            string  producto = null, interno = null;
+            int descuento= 0;
+            double precio = 0.0;
+            string cad = string.Format(@"SELECT *  FROM Productos WHERE codigo = @codigo OR interno = @codigo; ");
+            SqlCommand consulta = new SqlCommand(cad, conexion);
+
+            consulta.Parameters.AddWithValue("codigo",codigo);
+            SqlDataAdapter adapatadorSQL = new SqlDataAdapter(consulta);
+            DataTable Datos = new DataTable();
+            adapatadorSQL.Fill(Datos);
+            if (Datos.Rows.Count > 0)
+            {
+                try
+                {
+                    interno = Datos.Rows[0][3].ToString();
+                    producto = Datos.Rows[0][2].ToString();
+                    descuento = Convert.ToInt16(Datos.Rows[0][4].ToString());
+                    precio = Convert.ToDouble(Datos.Rows[0][5].ToString());
+                }
+                catch (Exception e) { MessageBox.Show("Error al convertir la cadena"); }
+            }
+            return (producto,interno,descuento,precio);
+
+        }
     }
 }
