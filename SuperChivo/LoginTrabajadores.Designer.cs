@@ -39,9 +39,14 @@ namespace SuperChivo
             this.txtId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Errores = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cerrar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Errores)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,7 +59,7 @@ namespace SuperChivo
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(138, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(623, 404);
+            this.panel1.Size = new System.Drawing.Size(1089, 600);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -66,7 +71,7 @@ namespace SuperChivo
             this.panel2.Controls.Add(this.btnEntrar);
             this.panel2.Controls.Add(this.txtId);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(121, 73);
+            this.panel2.Location = new System.Drawing.Point(354, 171);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(380, 258);
             this.panel2.TabIndex = 0;
@@ -133,25 +138,66 @@ namespace SuperChivo
             // 
             this.Errores.ContainerControl = this;
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(551, 538);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(280, 18);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "F5 para regresar a la pagina principal";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Olive;
+            this.panel4.Controls.Add(this.cerrar);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1364, 36);
+            this.panel4.TabIndex = 10;
+            // 
+            // cerrar
+            // 
+            this.cerrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cerrar.BackgroundImage")));
+            this.cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cerrar.Location = new System.Drawing.Point(1285, 3);
+            this.cerrar.Name = "cerrar";
+            this.cerrar.Size = new System.Drawing.Size(51, 36);
+            this.cerrar.TabIndex = 1;
+            this.cerrar.TabStop = false;
+            this.cerrar.Click += new System.EventHandler(this.cerrar_Click);
+            // 
             // LoginTrabajadores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(898, 530);
+            this.ClientSize = new System.Drawing.Size(1364, 726);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1366, 728);
+            this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "LoginTrabajadores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SuperChivo";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LoginTrabajadores_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.LoginTrabajadores_KeyUp);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Errores)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cerrar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -165,5 +211,8 @@ namespace SuperChivo
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.ErrorProvider Errores;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox cerrar;
     }
 }

@@ -12,13 +12,20 @@ namespace SuperChivo
 {
     public partial class AreaTrabajo : Form
     {
+        
         static int contador = 1;
+        static bool adminActivo = false;
         ConexionBD conexion;
         static double suma=0;
         bool va1 = false;
         static bool cant = false;
+        static bool sumarCant = false;
+        ValidarAdmin admin;
 
-        public AreaTrabajo()
+
+
+
+        public AreaTrabajo(string nombre, string puesto)
         {
             
             InitializeComponent();
@@ -26,10 +33,10 @@ namespace SuperChivo
             conexion = new ConexionBD();
             conexion.Conectar();
             lbEstado.Text = "Ingrese codigo del producto";
+            lbNombreCajero.Text = nombre;
+            lbEstadoAdmin.Text = "INACTIVO";
+
         }
-
-
-
 
         private void BuscarProductos(string codigo)
         {
@@ -40,6 +47,7 @@ namespace SuperChivo
                 txtCodigo.Clear();
                 txtCodigo.Focus();
                 cant = true;
+                sumarCant = true;
             }
             else if (cant)
             {
@@ -51,25 +59,23 @@ namespace SuperChivo
             }
             else
             {
-               
                 var datos = conexion.ConsultarProductos(codigo);
                 if (datos.producto != null)
                 {
-
                     for (byte a = 0; a < mostrarProductos.Items.Count; a++)
                     {
                         if (datos.interno == mostrarProductos.Items[a].SubItems[0].Text)
                         {
+                            lbEstado.Text = "Ingrese codigo del producto";
                             AgreagarExistente(datos.precio, a);
                             repetido = true;
                             SumarCantProductos();
                             break;
                         }
                     }
-
                     if (!repetido)
                     {
-                       
+                        lbEstado.Text = "Ingrese codigo del producto";
                         suma = datos.precio;
                         IntroducirValores(datos.interno, datos.producto, datos.descuento, datos.precio, contador);
                         contador = 1;
@@ -83,16 +89,15 @@ namespace SuperChivo
                     txtCodigo.SelectAll();
                 }
             }
-           
-
         }
         private void IntroducirValores(string interno, string descripcion,  int descuento, double precio, int cont)
         {
+            
             double total = precio * contador;
             ListViewItem lista;
             lista = new ListViewItem(interno);
             lista.SubItems.Add(descripcion);
-            lista.SubItems.Add("$" + precio.ToString());
+            lista.SubItems.Add( precio.ToString("C"));
             lista.SubItems.Add(cont.ToString() + " unid.");
             lista.SubItems.Add(descuento.ToString() + "%");
             lista.SubItems.Add(total.ToString("C"));
@@ -117,18 +122,27 @@ namespace SuperChivo
             if (e.KeyChar==(char)Keys.Enter) BuscarProductos(txtCodigo.Text);
         }
 
-        //implementar
         private void  AgreagarExistente(double precioProducto,int fila )
         {
-            StringBuilder cantidad = new StringBuilder(mostrarProductos.Items[fila].SubItems[3].Text);
-            cantidad.Remove(1, cantidad.Length - 1);
-            int cant = Convert.ToInt32(cantidad.ToString());
+            string  cantidad = mostrarProductos.Items[fila].SubItems[3].Text;
+            //obtener solo numeros con linq
+            string cantidadNuevo = string.Concat(cantidad.Where(c => Char.IsDigit(c)));
+            int cant = Convert.ToInt32(cantidadNuevo);
             cant++;
+            if (sumarCant)
+            {
+                cant--;
+                cant += contador;
+                sumarCant = false;
+                
+            }
+            
             mostrarProductos.Items[fila].SubItems[3].Text = string.Format(cant + " unid. ");
             precioProducto *= cant;
             mostrarProductos.Items[fila].SubItems[5].Text = precioProducto.ToString("C");
             EliminarTodasSelecciones();
             mostrarProductos.Items[fila].Selected = true;
+            contador = 1;
         }
         private void SumarCantProductos()
         {
@@ -147,6 +161,7 @@ namespace SuperChivo
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show("Error: " + e.Message);
                 }
             }
             lbTotal.Text = total.ToString("C");
@@ -164,6 +179,112 @@ namespace SuperChivo
                 byte indice = Convert.ToByte(a.ToString());
                 mostrarProductos.Items[indice].Selected = false;
             }
+        }
+
+        private void AreaTrabajo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (adminActivo)
+                {
+                    ///borrar los datos por la tecla delete
+                    for (int i = 0; i < mostrarProductos.SelectedItems.Count; i++)
+                    {
+                        ListViewItem lista = mostrarProductos.SelectedItems[i];
+                        mostrarProductos.Items[lista.Index].Remove();
+                    }
+                    //sumar los precios nuevamente
+                    SumarCantProductos();
+                }
+                else
+                {
+                    
+                    AdminNesesario validar = new AdminNesesario();
+                    validar.ShowDialog();
+                }
+            }
+            if(e.KeyCode == Keys.F12)
+            {
+                admin = new ValidarAdmin();
+                admin.ShowDialog();
+                //Si se han introducido credenciales validas se activara el admin
+                if (admin.Estado)
+                {
+                    adminActivo =true;
+                    lbEstadoAdmin.Text = "ACTIVO";
+                }
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                if (adminActivo)
+                {
+                    adminActivo = false;
+                    lbEstadoAdmin.Text = "INACTIVO";
+                }
+                else { MessageBox.Show("El administrador no esta activo","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            }
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Dispose();
+                this.Close();
+            }
+            if (e.KeyCode == Keys.F11)
+            {
+                btnPagar.PerformClick();
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                btnClienteF.PerformClick();
+            }
+        }
+        /// <summary>
+        /// Para que la ventana se muestre una sola vez la ventana
+        /// </summary>
+       
+
+        private void AreaTrabajo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        private void BorrarDatos()
+        {
+            lbIVA.Text = "$0.00";
+            lbTotal.Text= "$0.00";
+            lbTotalNeto.Text ="$0.00";
+            mostrarProductos.Items.Clear();
+            txtCodigo.Clear();
+            txtCodigo.Focus();
+        }
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            if (lbTotalNeto.Text != "$0.00")
+            {
+                PagarCuenta pago = new PagarCuenta(lbTotalNeto.Text);
+                pago.ShowDialog();
+                if (pago.Pagado)
+                {
+                    GenerarTikets tikets = new GenerarTikets(mostrarProductos, lbIVA.Text, lbTotal.Text, lbTotalNeto.Text,lbNombreCajero.Text);
+                    BorrarDatos();
+                }
+            }
+            else { MessageBox.Show("No tiene ningun producto por cancelar", "COBRO CANCELADO", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        }
+
+        private void btnClienteF_Click(object sender, EventArgs e)
+        {
+            if (adminActivo)
+            {
+                double saldo = Convert.ToDouble(lbTotalNeto.Text);
+                double descuento = saldo - ((saldo / 100) * 11);
+                lbEstado.Text = "Descuento Cliente Frecuente Aplicado";
+                lbTotalNeto.Text = descuento.ToString("C");
+            }
+            else
+            {
+                admin = new ValidarAdmin();
+                admin.ShowDialog();
+            }
+           
         }
     }
 }

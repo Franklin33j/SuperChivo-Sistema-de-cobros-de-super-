@@ -32,8 +32,10 @@ namespace SuperChivo
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnRegistrarUsuario = new System.Windows.Forms.Button();
             this.btnVerificarPrecio = new System.Windows.Forms.Button();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,19 +49,16 @@ namespace SuperChivo
             this.lbHora = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,59 +67,83 @@ namespace SuperChivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Lime;
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Controls.Add(this.btnRegistrarUsuario);
             this.panel1.Controls.Add(this.btnVerificarPrecio);
             this.panel1.Controls.Add(this.btnIniciar);
-            this.panel1.Location = new System.Drawing.Point(928, 48);
+            this.panel1.Location = new System.Drawing.Point(944, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(428, 585);
+            this.panel1.Size = new System.Drawing.Size(428, 624);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Gold;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(287, 429);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(26, 24);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "f4";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Gold;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(287, 269);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 24);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "f2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Gold;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(287, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 24);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "f1";
             // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSalir.Location = new System.Drawing.Point(109, 450);
+            this.btnSalir.Location = new System.Drawing.Point(115, 408);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(186, 55);
+            this.btnSalir.Size = new System.Drawing.Size(186, 68);
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // btnRegistrarUsuario
-            // 
-            this.btnRegistrarUsuario.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnRegistrarUsuario.Location = new System.Drawing.Point(109, 325);
-            this.btnRegistrarUsuario.Name = "btnRegistrarUsuario";
-            this.btnRegistrarUsuario.Size = new System.Drawing.Size(186, 55);
-            this.btnRegistrarUsuario.TabIndex = 2;
-            this.btnRegistrarUsuario.Text = "Registrar Usuario";
-            this.btnRegistrarUsuario.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnVerificarPrecio
             // 
             this.btnVerificarPrecio.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerificarPrecio.Location = new System.Drawing.Point(109, 204);
+            this.btnVerificarPrecio.Location = new System.Drawing.Point(115, 259);
             this.btnVerificarPrecio.Name = "btnVerificarPrecio";
-            this.btnVerificarPrecio.Size = new System.Drawing.Size(186, 55);
+            this.btnVerificarPrecio.Size = new System.Drawing.Size(186, 68);
             this.btnVerificarPrecio.TabIndex = 1;
             this.btnVerificarPrecio.Text = "Verificar Precio";
             this.btnVerificarPrecio.UseVisualStyleBackColor = true;
+            this.btnVerificarPrecio.Click += new System.EventHandler(this.btnVerificarPrecio_Click);
             // 
             // btnIniciar
             // 
             this.btnIniciar.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciar.Location = new System.Drawing.Point(109, 80);
+            this.btnIniciar.Location = new System.Drawing.Point(115, 108);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(186, 55);
+            this.btnIniciar.Size = new System.Drawing.Size(186, 68);
             this.btnIniciar.TabIndex = 0;
             this.btnIniciar.Text = "Iniciar Ventas";
             this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // panel2
             // 
@@ -132,7 +155,7 @@ namespace SuperChivo
             this.panel2.Location = new System.Drawing.Point(0, 79);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1, 50, 60, 30);
-            this.panel2.Size = new System.Drawing.Size(930, 214);
+            this.panel2.Size = new System.Drawing.Size(946, 214);
             this.panel2.TabIndex = 1;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
@@ -234,7 +257,7 @@ namespace SuperChivo
             this.panel3.Controls.Add(this.lbHora);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(0, 627);
+            this.panel3.Location = new System.Drawing.Point(8, 666);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1356, 58);
             this.panel3.TabIndex = 8;
@@ -248,20 +271,9 @@ namespace SuperChivo
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1348, 42);
+            this.panel4.Size = new System.Drawing.Size(1364, 42);
             this.panel4.TabIndex = 9;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(1214, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 36);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
             // 
@@ -274,56 +286,34 @@ namespace SuperChivo
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // label5
+            // pictureBox2
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Gold;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(282, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "f1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Gold;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(282, 194);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 24);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "f2";
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(1214, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(51, 36);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Gold;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(282, 325);
+            this.label7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 645);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 24);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "f3";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Gold;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(282, 439);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(26, 24);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "f4";
+            this.label7.Size = new System.Drawing.Size(316, 18);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Autor: Jose Franklin Angel Guevara";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 687);
+            this.ClientSize = new System.Drawing.Size(1364, 726);
             this.ControlBox = false;
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox1);
@@ -334,10 +324,11 @@ namespace SuperChivo
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1366, 728);
-            this.MinimumSize = new System.Drawing.Size(915, 486);
+            this.MinimumSize = new System.Drawing.Size(909, 590);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SuperChivo";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -347,9 +338,10 @@ namespace SuperChivo
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -360,7 +352,6 @@ namespace SuperChivo
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnRegistrarUsuario;
         private System.Windows.Forms.Button btnVerificarPrecio;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Label label3;
@@ -375,8 +366,8 @@ namespace SuperChivo
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

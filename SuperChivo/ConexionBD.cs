@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+
 using System.Windows.Forms;
 
 namespace SuperChivo
@@ -26,11 +25,16 @@ namespace SuperChivo
         {
             conexion = new SqlConnection("Server=.; DataBase = SuperChivo ;Integrated Security=true");
         }
-
+        /// <summary>
+        /// Inicia la conexion a la base de datos SuperChivo
+        /// </summary>
         public void Conectar()
         {
             conexion.Open();
         }
+        /// <summary>
+        /// Cierra la conexion a la base de datos SuperChivo
+        /// </summary>
         public void Desconectar()
         {
             conexion.Close();
@@ -42,12 +46,13 @@ namespace SuperChivo
         /// <param name="id"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public (string id, string password) ConsultaUsuarios(string id, string password)
+        public (string nombre, string cargo, bool administrador) ConsultaUsuarios(string id, string password)
         {
-            string va1=null, va2 =null;
-            string cad = string.Format(@"SELECT nombreEmpleado,cargo  FROM Empleados WHERE idUser = @id AND contracena = @contracena; ");
+            string va1 = null, va2 = null;
+            bool va3 = false;
+            string cad = string.Format(@"SELECT nombreEmpleado,cargo,administrador  FROM Empleados WHERE idUser = @id AND contracena = @contracena; ");
             SqlCommand consulta = new SqlCommand(cad, conexion);
-            
+
             consulta.Parameters.AddWithValue("id", id);
             consulta.Parameters.AddWithValue("contracena", password);
             SqlDataAdapter adapatadorSQL = new SqlDataAdapter(consulta);
@@ -55,10 +60,11 @@ namespace SuperChivo
             adapatadorSQL.Fill(Datos);
             if (Datos.Rows.Count > 0)
             {
-                va1= Datos.Rows[0][0].ToString();
+                va1 = Datos.Rows[0][0].ToString();
                 va2 = Datos.Rows[0][1].ToString();
+                va3 = Convert.ToBoolean(Datos.Rows[0][2].ToString());
             }
-            return (va1, va2);
+            return (va1, va2, va3);
 
         }
         /// <summary>
@@ -68,15 +74,15 @@ namespace SuperChivo
         /// </summary>
         /// <param name="codigo">Almacena el valor del codigo introducido por el usuario para su respectiva verififcacion</param>
         /// <returns></returns>
-        public ( string producto, string interno, int descuento, double precio) ConsultarProductos(string codigo)
+        public (string producto, string interno, int descuento, double precio) ConsultarProductos(string codigo)
         {
-            string  producto = null, interno = null;
-            int descuento= 0;
+            string producto = null, interno = null;
+            int descuento = 0;
             double precio = 0.0;
             string cad = string.Format(@"SELECT *  FROM Productos WHERE codigo = @codigo OR interno = @codigo; ");
             SqlCommand consulta = new SqlCommand(cad, conexion);
 
-            consulta.Parameters.AddWithValue("codigo",codigo);
+            consulta.Parameters.AddWithValue("codigo", codigo);
             SqlDataAdapter adapatadorSQL = new SqlDataAdapter(consulta);
             DataTable Datos = new DataTable();
             adapatadorSQL.Fill(Datos);
@@ -91,8 +97,42 @@ namespace SuperChivo
                 }
                 catch (Exception e) { MessageBox.Show("Error al convertir la cadena"); }
             }
-            return (producto,interno,descuento,precio);
+            return (producto, interno, descuento, precio);
 
+        }
+        public DataTable  NProductos(string  cod)
+        {
+            DataTable retorno= new DataTable();
+            if (cod.Length == 13)
+            {
+                string cadNueva = cod.Substring(5);
+                string cad = string.Format("SELECT *  FROM Productos WHERE codigo  like @codigo ORDER BY codigo ASC;");
+                SqlCommand consulta = new SqlCommand(cad, conexion);
+
+                consulta.Parameters.AddWithValue("codigo", "%"+cadNueva);
+                SqlDataAdapter adapatadorSQL = new SqlDataAdapter(consulta);
+                DataTable Datos = new DataTable();
+                adapatadorSQL.Fill(Datos);
+                if (Datos.Rows.Count > 0) { retorno = Datos; }
+
+                else { retorno = null; }
+            }
+            if (cod.Length == 5)
+            {
+
+                string cadnueva = cod.Substring(2 );
+ 
+                string cad = string.Format(@"SELECT *  FROM Productos WHERE interno like @codigo ORDER BY  codigo ASC;");
+                SqlCommand consulta = new SqlCommand(cad, conexion);
+
+                consulta.Parameters.AddWithValue("codigo", "%"+cadnueva );
+                SqlDataAdapter adapatadorSQL = new SqlDataAdapter(consulta);
+                DataTable Datos = new DataTable();
+                adapatadorSQL.Fill(Datos);
+                if (Datos.Rows.Count > 0) { retorno = Datos; }
+                else { retorno = null;  }
+            }
+            return retorno;
         }
     }
 }

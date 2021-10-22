@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminNesesario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminNesesario.Designer.cs">
+      <DependentUpon>AdminNesesario.cs</DependentUpon>
+    </Compile>
     <Compile Include="AreaTrabajo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,14 +71,36 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerarTikets.cs" />
     <Compile Include="LoginTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginTrabajadores.Designer.cs">
       <DependentUpon>LoginTrabajadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="PagarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagarCuenta.Designer.cs">
+      <DependentUpon>PagarCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidarAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValidarAdmin.Designer.cs">
+      <DependentUpon>ValidarAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerificarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerificarProducto.Designer.cs">
+      <DependentUpon>VerificarProducto.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminNesesario.resx">
+      <DependentUpon>AdminNesesario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AreaTrabajo.resx">
       <DependentUpon>AreaTrabajo.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginTrabajadores.resx">
       <DependentUpon>LoginTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagarCuenta.resx">
+      <DependentUpon>PagarCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +122,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ValidarAdmin.resx">
+      <DependentUpon>ValidarAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerificarProducto.resx">
+      <DependentUpon>VerificarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

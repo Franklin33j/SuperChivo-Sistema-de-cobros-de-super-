@@ -16,7 +16,7 @@ namespace SuperChivo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AreaTrabajo());
+            Application.Run(new Form1());
         }
     }
 }

@@ -12,13 +12,18 @@ namespace SuperChivo
 {
     public partial class LoginTrabajadores : Form
     {
+
+        
         public LoginTrabajadores()
         {
             InitializeComponent();
             this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             this.KeyPreview = true;
             ValidarErrores();
+            
         }
+        
+
         private void LoginTrabajadores_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter)
@@ -28,12 +33,25 @@ namespace SuperChivo
         }
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(txtId.TextLength.ToString());
+
             ConexionBD conexion = new ConexionBD();
             conexion.Conectar();
             var info = conexion.ConsultaUsuarios(txtId.Text, txtPassword.Text);
             //Si un campo es null es porque no se ha encontrado las credenciales introducidas
-            if (txtId != null)
+            if (info.nombre != null)
+            {
+
+                AreaTrabajo formTrabajo = new AreaTrabajo(info.nombre, info.cargo);
+                //solo en ese orden se puede ocultar el formulario anterior
+                conexion.Desconectar();
+                this.Hide();
+                formTrabajo.ShowDialog();
+                txtId.Clear();
+                txtPassword.Clear();
+                txtId.Focus();
+                this.Show();
+            }
+            else
             {
                 MessageBox.Show("Error en los datos introducidos", "Datos de usuario Invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtId.Clear();
@@ -52,5 +70,20 @@ namespace SuperChivo
 
         private void txtId_TextChanged(object sender, EventArgs e)=> ValidarErrores();
         private void txtPassword_TextChanged(object sender, EventArgs e) => ValidarErrores();
+
+        private void LoginTrabajadores_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                this.Dispose();
+                this.Close();
+            }
+        }
+
+        private void cerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
     }
 }

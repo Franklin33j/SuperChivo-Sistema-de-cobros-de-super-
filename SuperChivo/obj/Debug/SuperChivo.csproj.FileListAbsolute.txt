@@ -14,3 +14,7 @@ C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\bin\Debug\itextsharp.xml
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.csproj.CopyComplete
 C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.AreaTrabajo.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.ValidarAdmin.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.AdminNesesario.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.VerificarProducto.resources
+C:\Users\Franklin\Desktop\C#\SuperChivoSolucion\SuperChivo\obj\Debug\SuperChivo.PagarCuenta.resources
